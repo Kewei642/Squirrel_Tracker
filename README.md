@@ -1,4 +1,3 @@
 # Squirrel_Tracker
-Final Django project for Tools for Analytics.
+Final Django project for tools for analytics.
 Author: Kewei Chen, Jingshan Shi
-
