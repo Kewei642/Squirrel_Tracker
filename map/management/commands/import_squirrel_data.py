@@ -4,6 +4,13 @@ from django.core.management.base import BaseCommand
 
 from map.models import Squirrel
 
+def str_to_bool(s):
+    if s.lower() == 'true':
+         return True
+    elif s.lower() == 'false':
+         return False
+    else:
+         raise ValueError # evil ValueError that doesn't tell you what the wrong value was
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
@@ -25,19 +32,19 @@ class Command(BaseCommand):
                     PrimaryFurColor=item['Primary Fur Color'],
                     Location=item['Location'],
                     SpecificLocation=item['Specific Location'],
-                    Running=item['Running'],
-                    Chasing=item['Chasing'],
-                    Climbing=item['Climbing'],
-                    Eating=item['Eating'],
-                    Foraging=item['Foraging'],
+                    Running=str_to_bool(item['Running']),
+                    Chasing=str_to_bool(item['Chasing']),
+                    Climbing=str_to_bool(item['Climbing']),
+                    Eating=str_to_bool(item['Eating']),
+                    Foraging=str_to_bool(item['Foraging']),
                     OtherActivities=item['Other Activities'],
-                    Kuks=item['Kuks'],
-                    Quaas=item['Quaas'],
-                    Moans=item['Moans'],
-                    Tailflags=item['Tail flags'],
-                    Tailtwitches=item['Tail twitches'],
-                    Approaches=item['Approaches'],
-                    Indifferent=item['Indifferent'],
-                    Runsfrom=item['Runs from'],
+                    Kuks=str_to_bool(item['Kuks']),
+                    Quaas=str_to_bool(item['Quaas']),
+                    Moans=str_to_bool(item['Moans']),
+                    Tailflags=str_to_bool(item['Tail flags']),
+                    Tailtwitches=str_to_bool(item['Tail twitches']),
+                    Approaches=str_to_bool(item['Approaches']),
+                    Indifferent=str_to_bool(item['Indifferent']),
+                    Runsfrom=str_to_bool(item['Runs from']),
             )
             p.save()
