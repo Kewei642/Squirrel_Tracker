@@ -1,0 +1,5 @@
+<ul>
+  {% for squirrel in squirrels %}
+    <li><a href="{% url 'edit_squirrel' squirrel.UniqueSquirrelID %}">{{ squirrel.UniqueSquirrelID }}</a></li>
+  {% endfor %}
+</ul>
