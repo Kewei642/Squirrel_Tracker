@@ -1,12 +1,17 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.core.paginator import Paginator
 
 from map.models import Squirrel
 from .forms import SquirrelForm
 
 def all_squirrels(request):
     squirrels = Squirrel.objects.all()
+    paginator = Paginator(squirrels, 36) # show 30 squirrels per page
+
+    page = request.GET.get('page')
+    squirrels = paginator.get_page(page)
     context = {
         'squirrels': squirrels,
     }
