@@ -25,6 +25,11 @@ class Command(BaseCommand):
             data = list(reader)
 
         for item in data:
+            squirrel = Squirrel.objects.filter(unique_squirrel_id=item['Unique Squirrel ID'])
+            if squirrel.exists():
+                print(f"{item['Unique Squirrel ID']} already exists.")
+                continue
+            
             squirrel, created = Squirrel.objects.get_or_create(
                     longitude=item['X'],
                     latitude =item['Y'], 

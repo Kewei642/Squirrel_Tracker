@@ -7,6 +7,7 @@ class Squirrel(models.Model):
     unique_squirrel_id = models.CharField(
         help_text=_('Unique Squirrel ID Number'),
         max_length=50,
+        primary_key=True,
     )
 
     longitude = models.DecimalField(
@@ -30,6 +31,7 @@ class Squirrel(models.Model):
         help_text=_('Shift in the day'),
         max_length=2,
         choices=SHIFT_CHOICES,
+        default='Unknown',
     )
 
     date = models.DateField(
@@ -64,6 +66,7 @@ class Squirrel(models.Model):
         help_text=_('Primary Fur Color of squirrel'),
         max_length=16,
         choices=FUR_CHOICES,
+        default='Unknown',
     )
 
     ABOVE = 'Above Ground'
@@ -78,6 +81,7 @@ class Squirrel(models.Model):
         help_text=_('Location of squirrel'),
         max_length=16,
         choices=LOCATION_CHOICES,
+        default='Unknown',
     )
 
     specific_location = models.CharField(
