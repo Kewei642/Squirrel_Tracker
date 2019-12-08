@@ -1,16 +1,19 @@
 import csv
+import datetime
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 
 from map.models import Squirrel
 
+
+# utility function
 def str_to_bool(s):
     if s.lower() == 'true':
          return True
     elif s.lower() == 'false':
          return False
     else:
-         raise ValueError # evil ValueError that doesn't tell you what the wrong value was
+         raise ValueError("Wrong boolean value!") # evil ValueError that doesn't tell you what the wrong value was
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
@@ -22,29 +25,33 @@ class Command(BaseCommand):
             data = list(reader)
 
         for item in data:
-            p = Squirrel(
-                    Latitude=item['X'],
-                    Longitude=item['Y'], 
-                    UniqueSquirrelID=item['Unique Squirrel ID'],
-                    Shift=item['Shift'],
-                    Date=item['Date'],
-                    Age=item['Age'],
-                    PrimaryFurColor=item['Primary Fur Color'],
-                    Location=item['Location'],
-                    SpecificLocation=item['Specific Location'],
-                    Running=str_to_bool(item['Running']),
-                    Chasing=str_to_bool(item['Chasing']),
-                    Climbing=str_to_bool(item['Climbing']),
-                    Eating=str_to_bool(item['Eating']),
-                    Foraging=str_to_bool(item['Foraging']),
-                    OtherActivities=item['Other Activities'],
-                    Kuks=str_to_bool(item['Kuks']),
-                    Quaas=str_to_bool(item['Quaas']),
-                    Moans=str_to_bool(item['Moans']),
-                    Tailflags=str_to_bool(item['Tail flags']),
-                    Tailtwitches=str_to_bool(item['Tail twitches']),
-                    Approaches=str_to_bool(item['Approaches']),
-                    Indifferent=str_to_bool(item['Indifferent']),
-                    Runsfrom=str_to_bool(item['Runs from']),
+            squirrel, created = Squirrel.objects.get_or_create(
+                    longitude=item['X'],
+                    latitude =item['Y'], 
+                    unique_squirrel_id = item['Unique Squirrel ID'],
+                    shift=item['Shift'],
+                    date=datetime.datetime.strptime(item['Date'].strip(), '%m%d%Y').date(),
+                    age=item['Age'],
+                    primary_fur_color=item['Primary Fur Color'],
+                    location=item['Location'],
+                    specific_location=item['Specific Location'],
+                    running=str_to_bool(item['Running']),
+                    chasing=str_to_bool(item['Chasing']),
+                    climbing=str_to_bool(item['Climbing']),
+                    eating=str_to_bool(item['Eating']),
+                    foraging=str_to_bool(item['Foraging']),
+                    other_activities=item['Other Activities'],
+                    kuks=str_to_bool(item['Kuks']),
+                    quaas=str_to_bool(item['Quaas']),
+                    moans=str_to_bool(item['Moans']),
+                    tail_flags=str_to_bool(item['Tail flags']),
+                    tail_twitches=str_to_bool(item['Tail twitches']),
+                    approaches=str_to_bool(item['Approaches']),
+                    indifferent=str_to_bool(item['Indifferent']),
+                    runs_from=str_to_bool(item['Runs from']),
             )
-            p.save()
+            if created:
+                squirrel.save()
+                print(f"Squirrel {item['Unique Squirrel ID']} has been loaded.")
+            else:
+                raise ValueError("Wrong in data!")
