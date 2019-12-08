@@ -1,0 +1,107 @@
+<!doctype html>
+<style>
+
+li {
+        display:inline-block;
+        *display:inline; /*IE7*/
+        *zoom:1; /*IE7*/
+        color:white;
+        margin-right:40px;
+}
+
+
+</style>
+
+<html>
+<head> 
+<style>a{TEXT-DECORATION:none}</style> 
+</head><body>
+  <body>
+    <div class='row'>
+              <div class='header col-md-12' role="banner">
+
+        <header id="branding-header">
+            <div class="header-wrapper flex-container">
+            <div class="logo-container">
+            <a href="" target="_blank">
+            <img
+                src="https://pngriver.com/wp-content/uploads/2017/12/download-Squirrel-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-squirrel_PNG15794.png"
+                alt="Squirrels Logo"
+                class="logo"
+                width="160" 
+                height="120"
+            /></a>
+            <font face="Times New Roman" size="5" color="Black" style="font-weight:bold">Statistics about squirrel sightings</font>
+            </div>
+        </header>
+
+<div id='main-content'class="right-column col-md-12">
+There were {{total_squarrel}} sightinigs at central park during 2018.
+<br>
+By color:
+<ul>
+  {% for item in color_lst %}
+    <li>
+        <font face="Times New Roman" size="3" color="Black">{{item.primary_fur_color}}:{{item.c}}</font>
+    </li>
+  {% endfor %}
+</ul>
+
+<br>
+By age:
+<ul>
+  {% for item in age_lst %}
+    <li>
+        <font face="Times New Roman" size="3" color="Black">{{item.age}}:{{item.c}}</font>
+    </li>
+  {% endfor %}
+</ul>
+
+<br>
+By shift:
+<ul>
+  {% for item in shift_lst %}
+    <li>
+        <font face="Times New Roman" size="3" color="Black">{{item.shift}}:{{item.c}}</font>
+    </li>
+  {% endfor %}
+</ul>
+
+<br>
+By location:
+<ul>
+  {% for item in location_lst %}
+    <li>
+        <font face="Times New Roman" size="3" color="Black">{{item.location}}:{{item.c}}</font>
+    </li>
+  {% endfor %}
+</ul>
+
+
+
+
+
+</div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div>
+
+          <li>
+            <a
+              href="https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw"
+              target="_blank"
+              >Thanks to squirrel raw data from NYC Open Data
+            </a>
+          </li>
+          <br>
+          <br>
+          <li>
+            <font face="Times New Roman" size="3" color="Black">Contributed by Kewei Chen and Jingshan Shi</font>
+          </li>
+</div>
+
+  </body>
+</html>

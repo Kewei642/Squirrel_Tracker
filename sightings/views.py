@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
+from django.db.models import Count
+
 
 from map.models import Squirrel
 from .forms import SquirrelForm
@@ -17,9 +19,6 @@ def all_squirrels(request):
     }
     return render(request, 'sightings/all.html', context)
 
-def squirrel_details(request, squirrel_id):
-    squirrel = Squirrel.objects.get(unique_squirrel_id=squirrel_id)
-    return HttpResponse(squirrel.unique_squirrel_id)
 
 def edit_squirrel(request, squirrel_id):
     squirrel = Squirrel.objects.get(unique_squirrel_id=squirrel_id)
@@ -38,19 +37,39 @@ def edit_squirrel(request, squirrel_id):
 
     return render(request, 'sightings/edit.html', context)
 
+
+
 def add_squirrel(request):
     if request.method == 'POST':
         form = SquirrelForm(request.POST)
         # check data with form
         if form.is_valid():
+            x=form['unique_squirrel_id'].value()
             form.save()
-            return redirect(f'/sightings/list/')
+            return redirect(f'/sightings/{x}/')
     else:
         form = SquirrelForm()
 
     context = {
         'form': form,
-        'jazz': True,
     }
 
-    return render(request, 'sightings/edit.html', context)
+    return render(request, 'sightings/add.html', context)
+
+
+def stats(request):
+    total_squarrel = Squirrel.objects.count()
+    color_lst = Squirrel.objects.values('primary_fur_color').annotate(c=Count('primary_fur_color'))
+    age_lst = Squirrel.objects.values('age').annotate(c=Count('age'))
+    shift_lst = Squirrel.objects.values('shift').annotate(c=Count('shift'))
+    location_lst = Squirrel.objects.values('location').annotate(c=Count('location'))
+
+    context = {
+        'total_squarrel':total_squarrel,
+        'color_lst':color_lst,
+        'age_lst':age_lst,
+        'shift_lst':shift_lst,
+        'location_lst':location_lst,
+    }
+
+    return render(request, 'sightings/stats.html', context)
