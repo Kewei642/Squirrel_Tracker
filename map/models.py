@@ -3,6 +3,8 @@ from django.db import models
 from django.utils.translation import gettext as _
 
 # Create your models here.
+
+
 class Squirrel(models.Model):
     unique_squirrel_id = models.CharField(
         help_text=_('Unique Squirrel ID Number'),
@@ -40,7 +42,7 @@ class Squirrel(models.Model):
 
     ADULT = 'Adult'
     JUVENILEE = 'Juvenilee'
-    
+
     AGE_CHOICES = (
         (ADULT, 'Adult'),
         (JUVENILEE, 'Juvenilee'),
@@ -55,7 +57,7 @@ class Squirrel(models.Model):
     CINNAMONT = 'Cinnamont'
     BLACK = 'Black'
     GRAY = 'Gray'
-    
+
     FUR_CHOICES = (
         (CINNAMONT, 'Cinnamont'),
         (BLACK, 'Black'),
@@ -71,13 +73,13 @@ class Squirrel(models.Model):
 
     ABOVE = 'Above Ground'
     GROUND = 'Ground Plane'
-    
+
     LOCATION_CHOICES = (
         (ABOVE, 'Above Ground'),
         (GROUND, 'Ground Plane'),
     )
 
-    location =  models.CharField(
+    location = models.CharField(
         help_text=_('Location of squirrel'),
         max_length=16,
         choices=LOCATION_CHOICES,
@@ -113,7 +115,7 @@ class Squirrel(models.Model):
     foraging = models.BooleanField(
         help_text='If squirrel is foraging.',
         default=False,
-    ) 
+    )
 
     other_activities = models.CharField(
         help_text=_('Other Activities'),
@@ -159,7 +161,7 @@ class Squirrel(models.Model):
     runs_from = models.BooleanField(
         help_text='Squirrel was running from humans, seeing them as a threat.',
         default=False,
-    )   
+    )
 
     def __str__(self):
         return self.unique_squirrel_id
