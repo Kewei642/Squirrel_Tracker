@@ -38,23 +38,23 @@ li {
 <div id='main-content'class="right-column col-md-12">
 <ul>
   {% for squirrel in squirrels %}
-    <li><a href="{% url 'edit_squirrel' squirrel.UniqueSquirrelID %}">{{ squirrel.UniqueSquirrelID }}</a></li>
+    <li><a href="{% url 'edit_squirrel' squirrel.unique_squirrel_id %}">{{ squirrel.unique_squirrel_id }}</a></li>
   {% endfor %}
 </ul>
 <div align="center"><a href="{% url 'add' %}"><font face="Times New Roman" size="3" color="Black"><u>Add a squirrel</font></a><div>
 <div class="pagination" align="center">
     <span class="step-links">
         {% if squirrels.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ squirrels.previous_page_number }}"><u>previous</a>
+            <a href="?page=1">&laquo; first</a> &nbsp; &nbsp;
+            <a href="?page={{ squirrels.previous_page_number }}"><u>previous</a> &nbsp; &nbsp; 
         {% endif %}
 
         <span class="current">
-            Page {{ squirrels.number }} of {{ squirrels.paginator.num_pages }}.
+          Page {{ squirrels.number }} of {{ squirrels.paginator.num_pages }}. &nbsp; &nbsp;
         </span>
 
         {% if squirrels.has_next %}
-            <a href="?page={{ squirrels.next_page_number }}"><u>next</a>
+            <a href="?page={{ squirrels.next_page_number }}"><u>next</a> &nbsp; &nbsp;
             <a href="?page={{ squirrels.paginator.num_pages }}"><u>last &raquo;</a>
         {% endif %}
     </span>
@@ -73,6 +73,8 @@ li {
               >Thanks to squirrel raw data from NYC Open Data
             </a>
           </li>
+          <br>
+          <br>
           <li>
             <font face="Times New Roman" size="3" color="Black">Contributed by Kewei Chen and Jingshan Shi</font>
           </li>

@@ -18,11 +18,11 @@ def all_squirrels(request):
     return render(request, 'sightings/all.html', context)
 
 def squirrel_details(request, squirrel_id):
-    squirrel = Squirrel.objects.get(UniqueSquirrelID=squirrel_id)
-    return HttpResponse(squirrel.UniqueSquirrelID)
+    squirrel = Squirrel.objects.get(unique_squirrel_id=squirrel_id)
+    return HttpResponse(squirrel.unique_squirrel_id)
 
 def edit_squirrel(request, squirrel_id):
-    squirrel = Squirrel.objects.get(UniqueSquirrelID=squirrel_id)
+    squirrel = Squirrel.objects.get(unique_squirrel_id=squirrel_id)
     if request.method == 'POST':
         form = SquirrelForm(request.POST, instance=squirrel)
         # check data with form
