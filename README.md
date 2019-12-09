@@ -10,7 +10,7 @@ The number of squirrels are still growing, and it needs you contribution. This p
 
 ## Group Name and Section
 
-Group Name: Project Group 22 \\
+Group Name: Project Group 22;
 Section: 1
 
 ## UNIs
