@@ -1,85 +1,92 @@
 <!doctype html>
 <style>
-
-li {
-        display:inline-block;
-        *display:inline; /*IE7*/
-        *zoom:1; /*IE7*/
-        color:white;
-        margin-right:40px;
-}
-
-
+  li {
+    display: inline-block;
+    *display: inline;
+    /*IE7*/
+    *zoom: 1;
+    /*IE7*/
+    color: white;
+    margin-right: 40px;
+  }
 </style>
 
 <html>
-<head> 
-<style>a{TEXT-DECORATION:none}</style> 
-</head><body>
+
+<head>
+  <style>
+    a {
+      TEXT-DECORATION: none
+    }
+  </style>
+</head>
+
+<body>
+
   <body>
     <div class='row'>
-              <div class='header col-md-12' role="banner">
+      <div class='header col-md-12' role="banner">
 
         <header id="branding-header">
-            <div class="header-wrapper flex-container">
+          <div class="header-wrapper flex-container">
             <div class="logo-container">
-            <a href="" target="_blank">
-            <img
-                src="https://pngriver.com/wp-content/uploads/2017/12/download-Squirrel-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-squirrel_PNG15794.png"
-                alt="Squirrels Logo"
-                class="logo"
-                width="160" 
-                height="120"
-            /></a>
-            <font face="Times New Roman" size="5" color="Black" style="font-weight:bold">All the squirrels ID are here...Click to edit it.</font>
+              <a href="" target="_blank">
+                <img
+                  src="https://pngriver.com/wp-content/uploads/2017/12/download-Squirrel-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-squirrel_PNG15794.png"
+                  alt="Squirrels Logo" class="logo" width="160" height="120" /></a>
+              <font face="Times New Roman" size="5" color="Black" style="font-weight:bold">All the squirrels ID are
+                here...Click to edit it.</font>
             </div>
         </header>
 
-<div id='main-content'class="right-column col-md-12">
-<ul>
-  {% for squirrel in squirrels %}
-    <li><a href="{% url 'edit_squirrel' squirrel.unique_squirrel_id %}">{{ squirrel.unique_squirrel_id }}</a></li>
-  {% endfor %}
-</ul>
-<div align="center"><a href="{% url 'add' %}"><font face="Times New Roman" size="3" color="Black"><u>Add a squirrel</font></a><div>
-<div class="pagination" align="center">
-    <span class="step-links">
-        {% if squirrels.has_previous %}
-            <a href="?page=1">&laquo; first</a> &nbsp; &nbsp;
-            <a href="?page={{ squirrels.previous_page_number }}"><u>previous</a> &nbsp; &nbsp; 
-        {% endif %}
-
-        <span class="current">
-          Page {{ squirrels.number }} of {{ squirrels.paginator.num_pages }}. &nbsp; &nbsp;
-        </span>
-
-        {% if squirrels.has_next %}
-            <a href="?page={{ squirrels.next_page_number }}"><u>next</a> &nbsp; &nbsp;
-            <a href="?page={{ squirrels.paginator.num_pages }}"><u>last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-</div>
-<br />
-<br />
-<br />
-<br />
-<div>
-
-          <li>
-              <font color="Black">Thanks to squirrel raw data from </font>
-            <a
-              href="https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw"
-              target="_blank"
-              >NYC Open Data
+        <div id='main-content' class="right-column col-md-12">
+          <ul>
+            {% for squirrel in squirrels %}
+            <li><a href="{% url 'edit_squirrel' squirrel.unique_squirrel_id %}">{{ squirrel.unique_squirrel_id }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          <div align="center"><a href="{% url 'add' %}">
+              <font face="Times New Roman" size="3" color="Black"><u>Add a squirrel</font>
             </a>
-          </li>
-          <br>
-          <br>
-          <li>
-            <font face="Times New Roman" size="3" color="Black">Contributed by Kewei Chen and Jingshan Shi</font>
-          </li>
-</div>
+            <div>
+              <div class="pagination" align="center">
+                <span class="step-links">
+                  {% if squirrels.has_previous %}
+                  <a href="?page=1">&laquo; first</a> &nbsp; &nbsp;
+                  <a href="?page={{ squirrels.previous_page_number }}"><u>previous</a> &nbsp; &nbsp;
+                  {% endif %}
+
+                  <span class="current">
+                    Page {{ squirrels.number }} of {{ squirrels.paginator.num_pages }}. &nbsp; &nbsp;
+                  </span>
+
+                  {% if squirrels.has_next %}
+                  <a href="?page={{ squirrels.next_page_number }}"><u>next</a> &nbsp; &nbsp;
+                  <a href="?page={{ squirrels.paginator.num_pages }}"><u>last &raquo;</a>
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div>
+
+              <li>
+                <font color="Black">Thanks to squirrel raw data from </font>
+                <a href="https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw"
+                  target="_blank">NYC Open Data
+                </a>
+              </li>
+              <br>
+              <br>
+              <li>
+                <font face="Times New Roman" size="3" color="Black">Contributed by Kewei Chen and Jingshan Shi</font>
+              </li>
+            </div>
 
   </body>
+
 </html>
