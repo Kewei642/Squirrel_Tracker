@@ -41,11 +41,11 @@ class Squirrel(models.Model):
     )
 
     ADULT = 'Adult'
-    JUVENILEE = 'Juvenilee'
+    JUVENILE = 'Juvenile'
 
     AGE_CHOICES = (
         (ADULT, 'Adult'),
-        (JUVENILEE, 'Juvenilee'),
+        (JUVENILE, 'Juvenile'),
     )
 
     age = models.CharField(

@@ -17,6 +17,24 @@ def str_to_bool(s):
         raise ValueError("Wrong boolean value!")
 
 
+def valid_age(s):
+    if s not in (Squirrel.ADULT, Squirrel.JUVENILE):
+        return "Unknown"
+    return s
+
+
+def valid_color(s):
+    if s not in (Squirrel.CINNAMONT, Squirrel.BLACK, Squirrel.GRAY):
+        return "Unknown"
+    return s
+
+def valid_location(s):
+    if s not in (Squirrel.ABOVE, Squirrel.GROUND):
+        return "Unknown"
+    return s
+
+
+
 class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('csv_file')
@@ -40,9 +58,9 @@ class Command(BaseCommand):
                 shift=item['Shift'],
                 date=datetime.datetime.strptime(
                     item['Date'].strip(), '%m%d%Y').date(),
-                age=item['Age'],
-                primary_fur_color=item['Primary Fur Color'],
-                location=item['Location'],
+                age=valid_age(item['Age']),
+                primary_fur_color=valid_color(item['Primary Fur Color']),
+                location=valid_location(item['Location']),
                 specific_location=item['Specific Location'],
                 running=str_to_bool(item['Running']),
                 chasing=str_to_bool(item['Chasing']),
