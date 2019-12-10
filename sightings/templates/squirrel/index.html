@@ -16,7 +16,7 @@
 <body>
 
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #C1693C;">
         <a class="navbar-brand" href="#">Squirrels Tracker</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -50,11 +50,11 @@
         <div class="jumbotron">
           <div class="container">
             <h1 class="display-3">Squirrels Tracker<img
-              src="https://pngriver.com/wp-content/uploads/2017/12/download-Squirrel-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-squirrel_PNG15794.png"
+              {% comment %} src="https://pngriver.com/wp-content/uploads/2017/12/download-Squirrel-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-squirrel_PNG15794.png" {% endcomment %}
+              src="https://www.pngkey.com/png/full/60-607273_animals-baby-squirrel-cute-squirrel-squirrels-squirrel-squirrel.png"
               alt="Squirrels Logo" class="logo" width="160" height="120" /></h1>
-            <p>This is a website for keeping track of all the known squirrels and plans to start with Central Park. 
-              It includes a map displays the location of the squirrel sightings, a list of all sightings and statistics about sightings.</p>
-            <p><a class="btn btn-primary btn-lg" href="/sightings/" role="button">Learn more about sightings&raquo;</a></p>
+            <p>This is a website for keeping track of all the known squirrels and plans to start with Central Park. It includes a map displays the location of the squirrel sightings, a list of all sightings and statistics about sightings. You can view, edit and add the squirrels. The number of squirrels is still growing, and it needs you contribution:)</p>
+            <p><a class="btn btn-primary btn-lg" href="/sightings/" role="button" style="background-color: #77933c; /* Green */ border: none;">Learn more about sightings&raquo;</a></p>
           </div>
         </div>
       
@@ -63,18 +63,18 @@
           <div class="row">
             <div class="col-md-4">
               <h2>Map</h2>
-              <p>The map shows the location of the squirrel sightings at central park.</p>
-              <p><a class="btn btn-secondary" href="/map/" role="button">View details &raquo;</a></p>
+              <p>Find the location of your loved squirrel sightings at central park.</p>
+              <p><a class="btn btn-secondary" href="/map/" role="button" style="background-color: #E98B2A; /* Red */ border: none;">View details &raquo;</a></p>
             </div>
             <div class="col-md-4">
               <h2>Add Sighting</h2>
-              <p>Add your own sighting here!</p>
-              <p><a class="btn btn-secondary" href="/sightings/add" role="button">View details &raquo;</a></p>
+              <p>Feel free to add the new sighting of squirrels here to share with us.</p>
+              <p><a class="btn btn-secondary" href="/sightings/add" role="button" style="background-color: #E98B2A; /* Red */ border: none;">View details &raquo;</a></p>
             </div>
             <div class="col-md-4">
               <h2>Statistics</h2>
-              <p>More information about the squirrel sightings.</p>
-              <p><a class="btn btn-secondary" href="/sightings/stats" role="button">View details &raquo;</a></p>
+              <p>Take a look at the descriptive statistics about the certain features of squirrel dataset.</p>
+              <p><a class="btn btn-secondary" href="/sightings/stats" role="button" style="background-color: #E98B2A; /* Red */ border: none;">View details &raquo;</a></p>
             </div>
           </div>
       
