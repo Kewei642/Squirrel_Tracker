@@ -13,23 +13,6 @@
   <link rel="stylesheet" href="{% static 'sightings/carousel.css' %}">
   <title>Squirrels Tracker</title>
 
-
-  <style>
-    li {
-      display: inline-block;
-      *display: inline;
-      /*IE7*/
-      *zoom: 1;
-      /*IE7*/
-      color: white;
-      margin-right: 40px;
-    }
-
-    a {
-      TEXT-DECORATION: none
-    }
-  </style>
-
 </head>
 
 <body>
@@ -73,7 +56,7 @@
         <div id='main-content' class="right-column col-md-12">
           <ul>
             {% for squirrel in squirrels %}
-            <li><a href="{% url 'edit_squirrel' squirrel.unique_squirrel_id %}">{{ squirrel.unique_squirrel_id }}</a>
+            <li style="margin-right:40px; display:inline-block"><a href="{% url 'edit_squirrel' squirrel.unique_squirrel_id %}">{{ squirrel.unique_squirrel_id }}</a>
             </li>
             {% endfor %}
           </ul>
