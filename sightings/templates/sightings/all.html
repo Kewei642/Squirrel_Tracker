@@ -1,43 +1,74 @@
 <!doctype html>
-<style>
-  li {
-    display: inline-block;
-    *display: inline;
-    /*IE7*/
-    *zoom: 1;
-    /*IE7*/
-    color: white;
-    margin-right: 40px;
-  }
-</style>
+<html lang="en">
 
-<html>
+</html>
 
 <head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Custom CSS -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'sightings/carousel.css' %}">
+  <title>Squirrels Tracker</title>
+
+
   <style>
+    li {
+      display: inline-block;
+      *display: inline;
+      /*IE7*/
+      *zoom: 1;
+      /*IE7*/
+      color: white;
+      margin-right: 40px;
+    }
+
     a {
       TEXT-DECORATION: none
     }
   </style>
+
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Squirrels Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <body>
-    <div class='row'>
-      <div class='header col-md-12' role="banner">
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/map/">Map</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/sightings/">Sightings<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sightings/add">Add</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sightings/stats">Statistics</a>
+        </li>
 
-        <header id="branding-header">
-          <div class="header-wrapper flex-container">
-            <div class="logo-container">
-              <a href="" target="_blank">
-                <img
-                  src="https://pngriver.com/wp-content/uploads/2017/12/download-Squirrel-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-squirrel_PNG15794.png"
-                  alt="Squirrels Logo" class="logo" width="160" height="120" /></a>
-              <font face="Times New Roman" size="5" color="Black" style="font-weight:bold">All the squirrels ID are
-                here...Click to edit it.</font>
-            </div>
-        </header>
+      </ul>
+    </div>
+  </nav>
+
+  <main role="main">
+    <div class="jumbotron">
+      <div class="container">
+        <h3 class="display-3">Squirrels Tracker<img
+            src="https://pngriver.com/wp-content/uploads/2017/12/download-Squirrel-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-squirrel_PNG15794.png"
+            alt="Squirrels Logo" class="logo" width="160" height="120" /></h3>
+        <p>All the squirrels ID are here. You can click on ID to look into the details and edit the infomation.</p>
 
         <div id='main-content' class="right-column col-md-12">
           <ul>
@@ -46,50 +77,44 @@
             </li>
             {% endfor %}
           </ul>
-          <div align="center"><a href="{% url 'add' %}">
-              <font face="Times New Roman" size="5" color="Black"><u>Add a squirrel</font>
+        </div>
 
-            </a>
-            <br>
-            <br>
-            <div>
-              <div class="pagination" align="center">
-                <span class="step-links">
-                  {% if squirrels.has_previous %}
-                  <a href="?page=1">&laquo; first</a> &nbsp; &nbsp;
-                  <a href="?page={{ squirrels.previous_page_number }}"><u>previous</a> &nbsp; &nbsp;
-                  {% endif %}
 
-                  <span class="current">
-                    Page {{ squirrels.number }} of {{ squirrels.paginator.num_pages }}. &nbsp; &nbsp;
-                  </span>
+        <div class="text-center">
+          <span class="step-links">
+            {% if squirrels.has_previous %}
+            <a class="btn btn-primary btn-sm" href="?page=1">&laquo; first</a> &nbsp; &nbsp;
+            <a class="btn btn-primary btn-sm" href="?page={{ squirrels.previous_page_number }}">previous</a> &nbsp; &nbsp;
+            {% endif %}
 
-                  {% if squirrels.has_next %}
-                  <a href="?page={{ squirrels.next_page_number }}"><u>next</a> &nbsp; &nbsp;
-                  <a href="?page={{ squirrels.paginator.num_pages }}"><u>last &raquo;</a>
-                  {% endif %}
-                </span>
-              </div>
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <div>
+            <span class="current">
+              Page {{ squirrels.number }} of {{ squirrels.paginator.num_pages }}. &nbsp; &nbsp;
+            </span>
 
-              <li>
-                <font color="Black">Thanks to squirrel raw data from </font>
-                <a href="https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw"
-                  target="_blank">NYC Open Data
-                </a>
-              </li>
-              <br>
-              <br>
-              <li>
-                <font face="Times New Roman" size="3" color="Black">Contributed by Kewei Chen and Jingshan Shi</font>
-              </li>
-            </div>
+            {% if squirrels.has_next %}
+            <a class="btn btn-primary btn-sm"  href="?page={{ squirrels.next_page_number }}">next</a> &nbsp; &nbsp;
+            <a class="btn btn-primary btn-sm" href="?page={{ squirrels.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+          </span>
+        </div>
+        <br>
+        <br>
+        <p><a class="btn btn-primary btn-sm" href="/sightings/add" role="button">Add a squirrel sighting&raquo;</a></p>
 
-  </body>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='header col-md-12' role="banner">
+  </main>
+  <footer class="container">
+    <p> Thanks to squirrel raw data from <a
+        href="https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw"
+        target="_blank">NYC Open Data</a>.</p>
+    <p>
+      Contributed by Kewei Chen and Jingshan Shi.
+    </p>
+  </footer>
+</body>
 
 </html>

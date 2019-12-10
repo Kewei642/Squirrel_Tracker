@@ -1,15 +1,72 @@
 <!doctype html>
-<html>
+<html lang="en">
+
+<head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Custom CSS -->
+  {% load static %}
+  <link rel="stylesheet"  href="{% static 'sightings/carousel.css' %}">
+  <title>Squirrels Tracker</title>
+</head>
 
 <body>
-  <h2> Add Sighting</h2>
-  <form method="post">
-    {% csrf_token %}
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Squirrels Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/map/">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sightings/">Sightings</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sightings/add">Add<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sightings/stats">Statistics</a>
+            </li>
 
-    {{ form.as_p }}
-    <br>
-    <input type="submit" name="Submit" value="Add Sighting">
-  </form>
+          </ul>
+        </div>
+      </nav>
+
+  <main role="main">
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <div class="container">
+                  <h1 class="display-3">Add Your Sighting<img
+                    src="https://pngriver.com/wp-content/uploads/2017/12/download-Squirrel-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-squirrel_PNG15794.png"
+                    alt="Squirrels Logo" class="logo" width="160" height="120" /></h1>
+                   <form method="post">
+                        {% csrf_token %}
+                    
+                        {{ form.as_p }}
+                        <br>
+                        
+                        <input class="btn btn-primary btn-lg" type="submit" name="Submit" value="Submit">
+                      </form>
+                    
+                </div>
+              </div>
+</main>
+  <footer class="container">
+      <p> Thanks to squirrel raw data from  <a href="https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw"
+        target="_blank">NYC Open Data</a>.</p>
+        <p>
+            Contributed by Kewei Chen and Jingshan Shi.
+        </p>
+    </footer>
 </body>
 
 </html>
